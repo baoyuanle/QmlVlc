@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 * Copyright © 2014, Sergey Radionov <rsatom_gmail.com>
 * All rights reserved.
 *
@@ -40,6 +40,7 @@ QmlVlcPlayer::QmlVlcPlayer( QObject* parent )
 
 QmlVlcPlayer::~QmlVlcPlayer()
 {
+    qDebug()<<"qmlVlcPlayer destruct";
     classEnd();
 
     player().close();
@@ -47,4 +48,5 @@ QmlVlcPlayer::~QmlVlcPlayer()
         QmlVlcConfig::instance().releaseLibvlcInstance( m_libvlc );
         m_libvlc = 0;
     }
+    qDebug()<<"qmlVlcPlayer destruct finished";
 }

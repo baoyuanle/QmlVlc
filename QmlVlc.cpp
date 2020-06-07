@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 * Copyright © 2014, Sergey Radionov <rsatom_gmail.com>
 * All rights reserved.
 *
@@ -29,6 +29,7 @@
 
 #include "QmlVlcVideoSurface.h"
 #include "QmlVlcPlayer.h"
+#include "QmlVlcConfig.h"
 
 #ifndef Q_OS_ANDROID
     #include "QmlVlcMediaListPlayer.h"
@@ -89,6 +90,9 @@ void RegisterQmlVlcPlayer()
     qmlRegisterType<QmlVlcPlayer>(
         qmlVlcUri, QmlVlcVersionMajor, QmlVlcVersionMinor,
         "VlcPlayer" );
+    qmlRegisterType<QmlVlcConfigProxy>(
+        qmlVlcUri, QmlVlcVersionMajor, QmlVlcVersionMinor,
+        "VlcConfig" );
 
 #ifndef Q_OS_ANDROID
     qmlRegisterType<QmlVlcMediaListPlayer>(

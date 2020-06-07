@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 * Copyright © 2014-2015, Sergey Radionov <rsatom_gmail.com>
 * All rights reserved.
 *
@@ -177,6 +177,7 @@ libvlc_instance_t* QmlVlcConfig::createLibvlcInstance()
     if( _hardwareAcceleration ) {
         opts.push_back( "--ffmpeg-hw" );
         opts.push_back( "--avcodec-hw=any" );
+        qDebug()<<"QmlVlc hard decode enabled";
     }
 
     _libvlc = libvlc_new( opts.size(), opts.data() );
@@ -196,4 +197,22 @@ void QmlVlcConfig::releaseLibvlcInstance( libvlc_instance_t* libvlc )
         libvlc_release( _libvlc );
         _libvlc = nullptr;
     }
+}
+
+QmlVlcConfigProxy::QmlVlcConfigProxy(QObject *parent /*= nullptr*/)
+    :QObject (parent)
+{
+}
+
+void QmlVlcConfigProxy::enableHardDecode(bool enable)
+{
+    QmlVlcConfig::instance().enableHardwareAcceleration(enable);
+}
+
+void QmlVlcConfigProxy::classBegin()
+{
+}
+
+void QmlVlcConfigProxy::componentComplete()
+{
 }

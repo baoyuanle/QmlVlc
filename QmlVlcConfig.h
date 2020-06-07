@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 * Copyright © 2014-2015, Sergey Radionov <rsatom_gmail.com>
 * All rights reserved.
 *
@@ -26,8 +26,24 @@
 #pragma once
 
 #include <QObject>
+#include <QtQml>
+#include <QQmlParserStatus>
 
 #include <vlc/vlc.h>
+
+class QmlVlcConfigProxy: public QObject,
+        public QQmlParserStatus
+{
+    Q_OBJECT
+    Q_INTERFACES(QQmlParserStatus)
+public:
+    QmlVlcConfigProxy(QObject *parent = nullptr);
+    Q_INVOKABLE void enableHardDecode(bool enable);
+protected:
+    void classBegin() override;
+    void componentComplete() override;
+};
+QML_DECLARE_TYPE(QmlVlcConfigProxy)
 
 //this class is not thread safe
 class QmlVlcConfig

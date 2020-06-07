@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 * Copyright © 2014-2015, Sergey Radionov <rsatom_gmail.com>
 * All rights reserved.
 *
@@ -24,6 +24,7 @@
 *******************************************************************************/
 
 #include "QmlVlcPlayerProxy.h"
+#include "QmlVlcConfig.h"
 
 #include <QDebug>
 #include <QCoreApplication>
@@ -310,7 +311,11 @@ QString QmlVlcPlayerProxy::get_mrl()
 
 void QmlVlcPlayerProxy::set_mrl( const QString& mrl )
 {
-    play( mrl );
+    qDebug()<<"QmlVlcPlayerProxy set_mrl:"<<mrl;
+    if(mrl.isEmpty())
+        stop();
+    else
+        play( mrl );
 }
 
 bool QmlVlcPlayerProxy::get_playing()
@@ -351,6 +356,16 @@ unsigned int QmlVlcPlayerProxy::get_volume()
 void QmlVlcPlayerProxy::set_volume( unsigned int v )
 {
     player().audio().set_volume( v );
+}
+
+float QmlVlcPlayerProxy::get_speed()
+{
+    return player().get_speed();
+}
+
+void QmlVlcPlayerProxy::set_speed(float fSpeed)
+{
+    player().set_speed(fSpeed);
 }
 
 QmlVlcPlayerProxy::State QmlVlcPlayerProxy::get_state()

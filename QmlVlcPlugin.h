@@ -1,11 +1,11 @@
-#pragma once
+﻿#pragma once
 
 #include <QtQml>
 #include <QQmlExtensionPlugin>
 
 #include "QmlVlc.h"
 
-#define QMLVLC_PLUGIN_ID "RSATom.QmlVlc"
+#define QMLVLC_PLUGIN_ID "QmlVlc"//RSATom.
 
 class Q_DECL_EXPORT QmlVlcPlugin
     : public QQmlExtensionPlugin

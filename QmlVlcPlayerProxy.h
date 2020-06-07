@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 * Copyright © 2014-2015, Sergey Radionov <rsatom_gmail.com>
 * All rights reserved.
 *
@@ -76,6 +76,7 @@ public:
     Q_PROPERTY( double position READ get_position WRITE set_position NOTIFY mediaPlayerPositionChanged )
     Q_PROPERTY( double time READ get_time WRITE set_time NOTIFY mediaPlayerTimeChanged )
     Q_PROPERTY( unsigned volume READ get_volume WRITE set_volume NOTIFY volumeChanged )
+    Q_PROPERTY( float speed READ get_speed WRITE set_speed NOTIFY mediaPlayerSpeedChanged )
 
     Q_PROPERTY( QmlVlcInput* input READ get_input CONSTANT )
     Q_PROPERTY( QmlVlcVideo* video READ get_video CONSTANT )
@@ -117,6 +118,8 @@ public:
     unsigned int get_volume();
     void set_volume( unsigned int );
 
+    float get_speed();
+    void set_speed(float fSpeed);
     State get_state();
 
     vlc::playlist_player_core& player()
@@ -145,6 +148,7 @@ Q_SIGNALS:
     void mediaPlayerSeekableChanged( bool seekable );
     void mediaPlayerPausableChanged( bool pausable );
     void mediaPlayerLengthChanged( double length );
+    void mediaPlayerSpeedChanged( float speed );
 
     void volumeChanged();
 
