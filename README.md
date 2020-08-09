@@ -5,6 +5,8 @@ QmlVlc
 
 libvlc wrapper for Qt Quick 2/Qml.
 
+注意 ：建议使用.pro(qmake),   因为CMakeLists.txt很多人反馈配置的不对
+
 Requires Qt 5.x.<br>
 Platform independent, and should work on any platform supported by Qt and Vlc ( but was tested only on Windows/Ubuntu Linux/Mac OS X ).
 
